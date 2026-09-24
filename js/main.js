@@ -1,4 +1,5 @@
 import { Game } from './game.js';
+import { setupInput } from './input.js';
 
 const board = document.getElementById('game-board');
 
@@ -73,8 +74,6 @@ const startGame = () => {
     interval = setInterval(() => {
             game.update();
             Render();
-            console.log("Render() & game update() called")
-
             if (!game.running) {
 
                 clearInterval(interval);
@@ -85,8 +84,14 @@ const startGame = () => {
 
         game.speed
     );
-    
+     setupInput(direction => {
 
+            game.setDirection(
+                direction
+            );
+
+        }
+    );
 
 }
 

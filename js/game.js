@@ -1,8 +1,9 @@
 import { Snake } from './snake.js';
-
+import { setupInput } from './input.js';
 export class Game {
 
     constructor() {
+        
 
         this.rows = 20;
         this.columns = 20;
@@ -14,6 +15,24 @@ export class Game {
         this.running = true;
 
         this.snake = new Snake();
+    }
+    setDirection(direction) {
+
+        const opposite = { // Define opposite directions
+
+            UP: "DOWN",
+            DOWN: "UP",
+            LEFT: "RIGHT",
+            RIGHT: "LEFT"
+
+        };
+
+        if (opposite[this.direction] === direction) {
+            return;
+        }
+
+        this.nextDirection = direction;
+
     }
     update() {
 
